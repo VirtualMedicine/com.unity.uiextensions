@@ -88,9 +88,9 @@ namespace UnityEngine.UI.Extensions
             {
                 RectTransform child = _screensContainer.transform.GetChild(i).gameObject.GetComponent<RectTransform>();
                 currentXPosition = _offset + i * pageStepValue;
-                child.sizeDelta = new Vector2(panelDimensions.width, panelDimensions.height);
-                child.anchoredPosition = new Vector2(currentXPosition, 0f);
-                child.anchorMin = child.anchorMax = child.pivot = _childAnchorPoint;
+                //child.sizeDelta = new Vector2(panelDimensions.width, panelDimensions.height);
+                //child.anchoredPosition = new Vector2(currentXPosition, 0f);
+                //child.anchorMin = child.anchorMax = child.pivot = _childAnchorPoint;
             }
 
             _dimension = currentXPosition + _offset * -1;
@@ -212,6 +212,9 @@ namespace UnityEngine.UI.Extensions
         /// </summary>
         public void UpdateLayout()
         {
+            if (!enabled)
+                return;
+
             _lerp = false;
             DistributePages();
             if (MaskArea)
